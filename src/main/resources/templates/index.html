@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Patient Management Application</h1>
+    <div class="mt-4">
+        <a class="btn btn-primary" th:href="@{/patients}">Get All Patients</a>
+        <a class="btn btn-secondary" th:href="@{/services}">Get All Services</a>
+    </div>
+</div>
+</body>
+</html>

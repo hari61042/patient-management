@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+<h1>Services</h1>
+
+<!-- Form to add a new service -->
+<form th:action="@{/services}" method="post">
+    <input type="text" name="service_name" placeholder="Service Name" required />
+    <input type="number" name="fees" placeholder="Fees" required />
+    <button type="submit">Add Service</button>
+</form>
+
+<!-- Displaying the list of services -->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Service Name</th>
+        <th>Fees</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="service : ${services}">
+        <td th:text="${service.id}"></td>
+        <td th:text="${service.service_name}"></td>
+        <td th:text="${service.fees}"></td>
+        <td>
+            <form th:action="@{/services/delete(id=${service.id})}" method="post" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<br>
+<a class="btn btn-primary" href="/">Back to Home</a>
+</body>
+</html>
