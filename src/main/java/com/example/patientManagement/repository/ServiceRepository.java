@@ -22,6 +22,9 @@ public class ServiceRepository {
 
     public void delete(Long id) {
         services.removeIf(service -> service.getId().equals(id));
+        if (currentId > 0) {
+            currentId--;
+        }
     }
 
 }

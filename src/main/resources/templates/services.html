@@ -72,7 +72,7 @@
         <td th:text="${service.fees}"></td>
         <td>
             <form th:action="@{/services/delete(id=${service.id})}" method="post" style="display:inline;">
-                <button type="submit">Delete</button>
+                <button type="submit" style="background-color: red">Delete</button>
             </form>
         </td>
     </tr>

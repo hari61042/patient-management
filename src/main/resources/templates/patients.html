@@ -71,8 +71,13 @@
         <td th:text="${patient.firstname}"></td>
         <td th:text="${patient.lastname}"></td>
         <td>
+            <form th:action="@{/patients/{id}(id=${patient.id})}" method="get" style="display:inline;">
+                <button type="submit" style="background-color: #007bff; color: white; padding: 10px 15px; border-radius: 5px; border: none; cursor: pointer;">
+                    View
+                </button>
+            </form>
             <form th:action="@{/patients/delete(id=${patient.id})}" method="post" style="display:inline;">
-                <button type="submit">Delete</button>
+                <button type="submit" style="background-color: red">Delete</button>
             </form>
         </td>
     </tr>

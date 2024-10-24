@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class PatientRepository {
@@ -22,5 +23,12 @@ public class PatientRepository {
 
     public void delete(Long id) {
         patients.removeIf(patient -> patient.getId().equals(id));
+        if (currentId > 0) {
+            currentId--;
+        }
+    }
+
+    public Optional<Patient> findById(Long id) {
+        return patients.stream().filter(patient -> patient.getId().equals(id)).findFirst();
     }
 }

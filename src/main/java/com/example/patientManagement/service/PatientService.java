@@ -5,6 +5,7 @@ import com.example.patientManagement.repository.PatientRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PatientService {
@@ -21,6 +22,14 @@ public class PatientService {
 
     public void createPatient(Patient patient) {
         patientRepository.save(patient);
+    }
+
+    public void deletePatient(Long id) {
+        patientRepository.delete(id);
+    }
+
+    public Optional<Patient> searchPatientByID(Long id) {
+        return patientRepository.findById(id);
     }
 
     private void initializePatients() {
